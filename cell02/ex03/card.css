@@ -1,0 +1,107 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* ทำให้ body สูงเต็มหน้าจอเพื่อให้ card อยู่ตรงกลาง */
+    margin: 0;
+}
+
+.profile-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    text-align: center;
+    max-width: 350px; /* กำหนดความกว้างสูงสุดของบัตร */
+    width: 90%; /* ทำให้บัตรตอบสนองต่อขนาดหน้าจอ */
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+.profile-header {
+    display: flex; /* ใช้ flexbox เพื่อจัดวางรูปโปรไฟล์และข้อมูลให้อยู่ข้างกัน */
+    align-items: center;
+    justify-content: center; /* จัดให้อยู่ตรงกลาง */
+    margin-bottom: 20px;
+    gap: 15px; /* ระยะห่างระหว่างรูปกับข้อความ */
+}
+
+.profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%; /* ทำให้รูปภาพเป็นวงกลม */
+    object-fit: cover; /* ทำให้รูปภาพพอดีกับพื้นที่โดยไม่บิดเบี้ยว */
+    border: 3px solid #007bff; /* ขอบรอบรูปโปรไฟล์ */
+}
+
+.user-info h2 {
+    margin: 0;
+    color: #333;
+    font-size: 1.5em;
+}
+
+.user-info .tagline {
+    margin: 5px 0 0;
+    color: #777;
+    font-size: 0.9em;
+}
+
+.description {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    font-size: 0.95em;
+}
+
+.social-links {
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center; /* จัดไอคอนให้อยู่ตรงกลาง */
+    gap: 15px; /* ระยะห่างระหว่างไอคอน */
+}
+
+.social-icon {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    transition: transform 0.2s ease-in-out; /* เพิ่ม animation เวลา hover */
+}
+
+.social-icon:hover {
+    transform: translateY(-3px); /* ยกขึ้นเล็กน้อยเมื่อวางเมาส์ */
+}
+
+.contact-button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.contact-button:hover {
+    background-color: #0056b3;
+}
+
+/* ถ้าใช้ table จริงๆ ให้ลอง uncomment ส่วนนี้และปรับแต่ง */
+/*
+.layout-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.layout-table td {
+    padding: 0;
+    vertical-align: top;
+}
+*/
