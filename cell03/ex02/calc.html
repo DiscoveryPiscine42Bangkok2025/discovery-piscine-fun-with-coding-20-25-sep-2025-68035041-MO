@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise 02: It's over 9000</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .calculator {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        input, select {
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="calculator">
+        <h1>Basic Calculator</h1>
+        <form name="calcForm">
+            <input type="text" name="left_operand" placeholder="Left number">
+            <select name="operator">
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="*">*</option>
+                <option value="/">/</option>
+                <option value="%">%</option>
+            </select>
+            <input type="text" name="right_operand" placeholder="Right number">
+            <input type="submit" value="Try me!">
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // Function to handle the calculation and display
+            function calculate() {
+                const form = document.forms.calcForm;
+                const leftOperand = parseInt(form.left_operand.value, 10);
+                const operator = form.operator.value;
+                const rightOperand = parseInt(form.right_operand.value, 10);
+                let result;
+
+                // Check for valid positive integer values (including 0)
+                if (isNaN(leftOperand) || isNaN(rightOperand) || leftOperand < 0 || rightOperand < 0) {
+                    alert('Error :(');
+                    console.log('Error :(');
+                    return;
+                }
+
+                // Handle division by zero
+                if ((operator === '/' || operator === '%') && rightOperand === 0) {
+                    alert('It\'s over 9000!');
+                    console.log('It\'s over 9000!');
+                    return;
+                }
+
+                // Perform the calculation
+                switch (operator) {
+                    case '+':
+                        result = leftOperand + rightOperand;
+                        break;
+                    case '-':
+                        result = leftOperand - rightOperand;
+                        break;
+                    case '*':
+                        result = leftOperand * rightOperand;
+                        break;
+                    case '/':
+                        result = leftOperand / rightOperand;
+                        break;
+                    case '%':
+                        result = leftOperand % rightOperand;
+                        break;
+                }
+
+                // Display the result
+                alert(result);
+                console.log(result);
+            }
+
+            // Attach the event listener to the form's submit event
+            document.forms.calcForm.addEventListener('submit', (e) => {
+                e.preventDefault(); // Prevent form from reloading the page
+                calculate();
+            });
+
+            // Set up the interval for the pop-up message
+            setInterval(() => {
+                alert('Please, use me...');
+            }, 30000); // 30000 milliseconds = 30 seconds
+        });
+    </script>
+</body>
+</html>
