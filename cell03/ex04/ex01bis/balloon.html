@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ballon</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(document).ready (function() {
+        $('.ballon').click (function() {
+            if ($(this).hasClass('red')) 
+            {
+                $(this).toggleClass('red');
+                $(this).toggleClass('blue');
+            }
+            else if ($(this).hasClass('green')) 
+            {
+                $(this).toggleClass('blue');
+                $(this).toggleClass('green');
+            }
+            else {
+                $(this).toggleClass('green');
+                $(this).toggleClass('red');
+            }
+
+            if ($(this).width() < 415)
+            {
+                $(this).width($(this).width() +10);
+                $(this).height($(this).height() + 10);
+            }
+            else {
+                $(this).css("opacity", "0");
+                $(this).width(200);
+                $(this).height(200);
+                setTimeout(() => {
+                    $(this).css("opacity", "1");
+                    $(this).toggleClass("red");
+                }, 300);
+                sleep(100)
+            }
+        })
+
+        $('.ballon').mouseleave(function () {
+            if ($(this).hasClass('blue')) 
+            {
+                $(this).toggleClass('green');
+                $(this).toggleClass('blue');
+            }
+            else if ($(this).hasClass('green')) 
+            {
+                $(this).toggleClass('red');
+                $(this).toggleClass('green');   
+            }
+            else {
+                $(this).toggleClass('blue');
+                $(this).toggleClass('red');
+            }
+
+            if ($(this).width() > 200) 
+            {
+                $(this).width(Math.max($(this).width() - 5, 200));
+                $(this).height(Math.max($(this).height() - 5, 200));
+            }
+        })
+    })
+</script>
+<style>
+    body {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin: 0;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+    }
+
+    .ballon {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background-color: red;
+    }
+
+    .red {
+        background-color: red;
+    }
+    .green {
+        background-color: green;
+    }
+    .blue {
+        background-color: blue;
+    }
+</style>
+<body>
+    <div class="ballon" onclick="pop(this)" onmouseleave="left(this)"></div>
+</body>
+</html>
